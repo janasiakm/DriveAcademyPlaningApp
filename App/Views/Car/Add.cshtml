@@ -1,0 +1,47 @@
+﻿@model Application.DTO.Cars.CarFullDTO
+
+@{
+    ViewData["Title"] = "Dodawanie Samochodu";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Add" asp-route-id="@Model.CarId" method="post">                    
+    
+                    <div class="form-group">
+                        @Html.HiddenFor(model => model.CarId)
+                    </div>
+    
+                    <div class="form-group">
+                        <label asp-for="Mark">Marka:</label>
+                        <input asp-for="Mark" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.Mark,"" , new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Model">Model:</label>
+                        <input asp-for="Model" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.Model,"" , new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="RejestractionNumber">Numer Rejestracyjny:</label>
+                        <input asp-for="RejestractionNumber" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.RejestractionNumber,"" , new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ProductionYear">Rok Produkcji:</label>
+                        <input asp-for="ProductionYear" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.ProductionYear,"" , new { @class = "text-danger" })
+                    </div>   
+  
+
+                    <button type="submit" class="btn btn-primary">Dodaj</button>
+                    <a href="@Url.Action("List")" class="btn btn-primary">Anuluj</a>
+</form>
+
+
+
+
+

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Application.DTO.Students.StudentDTO>
+@{
+    ViewData["Title"] = "Lista kursantów: ";
+}
+<a href="@Url.Action("Add")" class="btn btn-success">Dodaj nowego kursanta</a>
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Imię</th>
+            <th>Nazwisko</th>            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.StudentId</td>
+                <td>@student.FirstName</td>
+                <td>@student.LastName</td>
+                               
+                <td>
+                    <a href="@Url.Action("Edit", new { id = student.StudentId})" class="btn btn-primary">Edytuj</a>
+                    <a href="@Url.Action("Delete", new { id = student.StudentId})" class="btn btn-danger" onclick="return confirm('Czy na pewno chcesz usunąć kursanta?')">Usuń</a>                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

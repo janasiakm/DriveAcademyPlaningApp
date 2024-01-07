@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Application.DTO.Instructors.InstructorWithCategoryDTO>
+@{
+    ViewData["Title"] = "Lista Instruktorów: ";
+}
+<a href="@Url.Action("Add")" class="btn btn-success">Dodaj nowego insturktora</a>
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Imię</th>
+            <th>Nazwisko</th>                       
+            <th>Kategorie</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var instructor in Model)
+        {
+            <tr>
+                <td>@instructor.InstructorId</td>
+                <td>@instructor.FirstName</td>
+                <td>@instructor.LastName</td>                
+                <td> 
+                    @if (instructor.CatAM) { @Html.Raw("AM, "); } 
+                    @if (instructor.CatA1) { @Html.Raw("A1, "); } 
+                    @if (instructor.CatA2) { @Html.Raw("A2, "); } 
+                    @if (instructor.CatA) { @Html.Raw("A, "); } 
+                    @if (instructor.CatB1) { @Html.Raw("B1, "); } 
+                    @if (instructor.CatB) { @Html.Raw("B, "); } 
+                    @if (instructor.CatC1) { @Html.Raw("C1, "); } 
+                    @if (instructor.CatC) { @Html.Raw("C, "); } 
+                    @if (instructor.CatD1) { @Html.Raw("D1, "); } 
+                    @if (instructor.CatD) { @Html.Raw("D, "); } 
+                    @if (instructor.CatBE) { @Html.Raw("B+E, "); } 
+                    @if (instructor.CatC1E) { @Html.Raw("C1+E, "); } 
+                    @if (instructor.CatCE) { @Html.Raw("C+E, "); } 
+                    @if (instructor.CatD1E) { @Html.Raw("D1+E, "); } 
+                    @if (instructor.CatDE) { @Html.Raw("D+E, "); } 
+                    @if (instructor.CatT) { @Html.Raw("T, "); } 
+
+                 </td>                
+                <td><a href="@Url.Action("Category", new { id = instructor.InstructorId})" class="btn btn-primary">Kategorie</a>
+                    <a href="@Url.Action("Edit", new { id = instructor.InstructorId})" class="btn btn-primary">Edytuj</a>
+                    <a href="@Url.Action("Delete", new { id = instructor.InstructorId})" class="btn btn-danger" onclick="return confirm('Czy na pewno chcesz usunąć tego instruktora?')">Usuń</a>
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

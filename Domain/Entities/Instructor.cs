@@ -1,0 +1,27 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Domain.Entities
+{ 
+    public class Instructor 
+    {
+        [Key]
+        public int Id { get; set; }
+        public string FirstName { get; set; } = "";
+        public string LastName { get; set; } = "";
+        public string DateOfBirth { get; set; } = "";
+        public string IdNumber { get; set; } = "";
+        public string Adress { get; set; } = "";
+        public string PostCode { get; set; } = "";
+        public string City { get; set; } = "";
+        public string Email { get; set; } = "";
+        public string PhoneNr { get; set; } = "";
+        public string Status { get; set; } = "";
+        public DateTime Created { get; set; }
+        public DateTime Modification { get; set; }
+
+    }
+
+
+
+}

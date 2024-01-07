@@ -1,0 +1,75 @@
+﻿@model Application.DTO.Students.StudentFullDTO
+
+@{
+    ViewData["Title"] = "Edycja Kursanta";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Edit" asp-route-id="@Model.StudentId" method="post">
+    Ostatnia modyfikacja @Model.Modyfication
+    <div class="form-group">
+        @Html.HiddenFor(model => model.StudentId)
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="FirstName">Imię:</label>
+        <input asp-for="FirstName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LastName">Nazwisko:</label>
+        <input asp-for="LastName" class="form-control" />
+    </div>
+
+<div class="form-group">
+    <label asp-for="DateOfBirth">Data urodzenia:</label>
+    <input asp-for="DateOfBirth" class="form-control" type="date" id="dateOfBirthInput" />
+</div>
+
+    <div class="form-group">
+        <label asp-for="PESEL">PESEL:</label>
+        <input asp-for="PESEL" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Adress">Adres:</label>
+        <input asp-for="Adress" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PostCode">Kod Pocztowy:</label>
+        <input asp-for="PostCode" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="City">Miasto:</label>
+        <input asp-for="City" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email">Adres e-mail:</label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="PhoneNr">Telefon:</label>
+        <input asp-for="PhoneNr" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Category">Kategoria:</label>
+        <input asp-for="Category" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Status">Aktywny:</label>
+        <input asp-for="Status" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+    <a href="@Url.Action("List")" class="btn btn-primary">Wróć</a>
+</form>
+
+
+

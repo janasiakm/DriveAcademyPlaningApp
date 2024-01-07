@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Application.DTO.Timetable.TimetableList>
+@{
+    ViewData["Title"] = "Lista zaplanowanych jazd praktycznych: ";
+}
+<a href="@Url.Action("Add")" class="btn btn-success">Zaplanuj nową</a>
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Data i godzina</th>
+            <th>Liczba godzin</th>
+            <th>Kursant</th>
+            <th>Instruktor</th>            
+            <th>Samochód</th>   
+            <th>Kategoria</th>   
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var timetable in Model)
+        {
+            <tr>
+                <td>@timetable.Id</td>
+                <td>@timetable.Date</td>
+                <td>@timetable.NumbersOfHours</td>
+                <td>@timetable.StudentName</td>
+                <td>@timetable.InstructorName</td>
+                <td>@timetable.CarName</td>
+                <td>@timetable.Category</td>
+                                               
+                <td>                    
+                    <a href="@Url.Action("Delete", new { id = timetable.Id})" class="btn btn-danger" onclick="return confirm('Czy na pewno chcesz usunąć tego instruktora?')">Usuń</a>                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

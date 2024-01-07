@@ -1,0 +1,103 @@
+﻿@model Application.DTO.Instructors.InstructorWithCategoryDTO
+@{
+    ViewBag.Title = "Kategorie Instruktora:";
+}
+
+<h3>@Model.FirstName @Model.LastName </h3>
+<h5>Posiadane Kategorie szkoleniowe:</h5>
+
+
+@using (Html.BeginForm("Category", "Instructor", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group"> 
+        @Html.HiddenFor(model => model.InstructorId)
+        @Html.HiddenFor(model => model.FirstName)
+        @Html.HiddenFor(model => model.LastName)
+    </div>
+
+    <div class="form-group">
+        @Html.CheckBoxFor(model => model.CatAM)
+        @Html.LabelFor(model => model.CatAM,"AM")        
+    </div>
+
+    <div class="form-group">
+        @Html.CheckBoxFor(model => model.CatA1)
+        @Html.LabelFor(model => model.CatA1,"A1")        
+    </div>
+
+    <div class="form-group">
+        @Html.CheckBoxFor(model => model.CatA2)
+        @Html.LabelFor(model => model.CatA2,"A2")        
+    </div>
+
+    <div class="form-group">
+        @Html.CheckBoxFor(model => model.CatA)
+        @Html.LabelFor(model => model.CatA,"A")        
+    </div>
+
+    <div class="form-group">
+        @Html.CheckBoxFor(model => model.CatB1)
+        @Html.LabelFor(model => model.CatB1,"B1")        
+    </div>
+
+    <div class="form-group">
+        @Html.CheckBoxFor(model => model.CatB)
+        @Html.LabelFor(model => model.CatB,"B")        
+    </div>
+
+    <div class="form-group">
+        @Html.CheckBoxFor(model => model.CatC1)
+        @Html.LabelFor(model => model.CatC1,"C1")        
+    </div>
+
+    <div class="form-group">
+        @Html.CheckBoxFor(model => model.CatC)
+        @Html.LabelFor(model => model.CatC,"C")        
+    </div>
+
+    <div class="form-group">
+        @Html.CheckBoxFor(model => model.CatD1)
+        @Html.LabelFor(model => model.CatD1,"D1")        
+    </div>
+
+    <div class="form-group">
+        @Html.CheckBoxFor(model => model.CatD)
+        @Html.LabelFor(model => model.CatD,"D")        
+    </div>
+
+    <div class="form-group">
+        @Html.CheckBoxFor(model => model.CatBE)
+        @Html.LabelFor(model => model.CatBE,"B+E")        
+    </div>
+
+    <div class="form-group">
+        @Html.CheckBoxFor(model => model.CatC1E)
+        @Html.LabelFor(model => model.CatC1E,"C1+E")        
+    </div>
+
+    <div class="form-group">
+        @Html.CheckBoxFor(model => model.CatCE)
+        @Html.LabelFor(model => model.CatCE,"C+E")        
+    </div>
+
+    <div class="form-group">
+        @Html.CheckBoxFor(model => model.CatD1E)
+        @Html.LabelFor(model => model.CatD1E,"D1+E")        
+    </div>
+
+    <div class="form-group">
+        @Html.CheckBoxFor(model => model.CatDE)
+        @Html.LabelFor(model => model.CatDE,"D+E")
+    </div>
+
+    <div class="form-group">
+        @Html.CheckBoxFor(model => model.CatT)
+        @Html.LabelFor(model => model.CatT,"T")
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Zapisz" class="btn btn-primary" />
+        <a href="@Url.Action("List")" class="btn btn-primary">Wstecz</a>
+    </div>
+}

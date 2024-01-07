@@ -1,0 +1,87 @@
+﻿@model (Application.DTO.Timetable.TimetablePlaning,Application.DTO.Timetable.TimetableAdd)
+
+@{
+    ViewData["Title"] = "Planowanie";
+}
+
+<html>
+ <h1>@ViewData["Title"]</h1>   
+<body>
+    <form asp-action="Create" asp-controller="Timetable" method="post">
+        <div id="app">
+
+            <label for="Date">Data:</label>
+            <select asp-for="Item2.Date" id="Date">
+                <option value="">Wybierz</option>
+                @foreach (var item in Model.Item1.Date)
+                {
+                    <option value="@item.Date">@item.Date.Date.ToString("dd-MM-yyyy")</option>
+                }
+            </select>
+
+             <label for="Date">Godzina:</label>
+            <select asp-for="Item2.SelectedHour" id="SelectedHour">
+                
+                <option value="">Wybierz</option>
+                @for (var i=6;i<23;i++)
+                {
+                    <option value="@i">@i</option>
+                }
+            </select>
+            <br /><br />
+            <label for="Category">Kategoria:</label>
+            <select asp-for="Item2.Category" id="Category">
+                <option value="">Wybierz opcję</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+            </select>
+            <br /><br />
+            <label for="NumbersOfHours">LiczbaGodz:</label>
+            <select asp-for="Item2.NumbersOfHours" id="NumbersOfHours">
+                <option value="">Wybierz opcję</option>
+                @for (var i = 1; i < 4; i++)
+                {
+                    <option value="@i">@i</option>
+                }
+            </select>
+            <br /><br />
+            <label for="Instructor">Instruktor:</label>
+            <select asp-for="Item2.InstructorId" id="Instructor">
+                <option value="">Wybierz opcję</option>
+                @foreach (var item in Model.Item1.Instructors)
+                {
+                    <option value="@item.InstructorId">@item.FirstName @item.LastName</option>
+                }
+            </select>
+            <br /><br />
+            <label for="Student">Kursant:</label>
+            <select asp-for="Item2.StudentId" id="Student">
+                <option value="">Wybierz opcję</option>
+                @foreach (var item in Model.Item1.Students)
+                {
+                    <option value="@item.StudentId">@item.FirstName @item.LastName</option>
+                }
+            </select>
+            <br /><br />
+            <label for="Car">Samochód:</label>
+            <select asp-for="Item2.CarId" id="Car">
+                <option value="">Wybierz opcję</option>
+                @foreach (var item in Model.Item1.Cars)
+                {
+                    <option value="@item.CarId"> @item.Mark @item.Model @item.RejestractionNumber</option>
+                }
+            </select>
+
+            <div id="result">
+               
+                <div id="output"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Zapisz</button>
+            @* <a href="@Url.Action("Edit")" class="btn btn-primary">Edytuj</a>*@
+        </div>
+    </form>
+</body>
+
+
+</html>

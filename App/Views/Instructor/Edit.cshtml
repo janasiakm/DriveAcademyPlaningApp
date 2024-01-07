@@ -1,0 +1,84 @@
+﻿@model Application.DTO.Instructors.InstructorFullDTO
+@{
+    ViewData["Title"] = "Edycja Instruktora";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@3.2.12/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  </head>
+  <body>  
+      
+       <form asp-action="Edit" asp-route-id="@Model.InstructorId" method="post" novalidate>
+           Ostatnia modyfikacja @Model.Modyfication
+            <div class="form-group">
+                @Html.HiddenFor(model => model.InstructorId)
+            </div>
+    
+            <div class="form-group">
+                <label asp-for="FirstName">Imię:</label>
+                <input asp-for="FirstName" class="form-control" />
+                 @Html.ValidationMessageFor(model => model.FirstName,"" , new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LastName">Nazwisko:</label>
+                <input asp-for="LastName" class="form-control" />
+                 @Html.ValidationMessageFor(model => model.LastName,"" , new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DateOfBirth">Data urodzenia:</label>
+                <input asp-for="DateOfBirth" class="form-control" type="date" id="dateOfBirthInput" />
+                 @Html.ValidationMessageFor(model => model.DateOfBirth,"" , new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdNumber">Nr Uprawnień:</label>
+                <input asp-for="IdNumber" class="form-control" />
+                 @Html.ValidationMessageFor(model => model.IdNumber,"" , new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Adress">Adres:</label>
+                <input asp-for="Adress" class="form-control" />
+                 @Html.ValidationMessageFor(model => model.Adress,"" , new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PostCode">Kod Pocztowy:</label>
+                <input asp-for="PostCode" class="form-control" />
+                 @Html.ValidationMessageFor(model => model.PostCode,"" , new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label asp-for="City">Miasto:</label>
+                <input asp-for="City" class="form-control" />
+                 @Html.ValidationMessageFor(model => model.City,"" , new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email">Adres e-mail:</label>
+                <input asp-for="Email" class="form-control" />
+                 @Html.ValidationMessageFor(model => model.Email,"" , new { @class = "text-danger" })
+            </div>
+    
+            <div class="form-group">
+                <label asp-for="PhoneNr">Telefon:</label>
+                <input asp-for="PhoneNr" class="form-control" />
+                 @Html.ValidationMessageFor(model => model.PhoneNr,"" , new { @class = "text-danger" })
+            </div>
+
+            <button type="submit" class="btn btn-primary">Zapisz</button>
+            <a href="@Url.Action("List")" class="btn btn-primary">Wróć</a>
+        </form>
+
+    </body>
+
+</html>
+

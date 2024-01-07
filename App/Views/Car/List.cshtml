@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Application.DTO.Cars.CarDTO>
+@{
+    ViewData["Title"] = "Lista samochodów: ";
+}
+<a href="@Url.Action("Add")" class="btn btn-success">Dodaj nowy samochód</a>
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Numer Rejstracyjny</th>            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+        {
+            <tr>
+                <td>@car.CarId</td>
+                <td>@car.Mark</td>
+                <td>@car.Model</td>
+                <td>@car.RejestractionNumber</td>       
+
+                <td>
+                    <a href="@Url.Action("Edit", new { id = car.CarId})" class="btn btn-primary">Edytuj</a>
+                    <a href="@Url.Action("Delete", new { id = car.CarId})" class="btn btn-danger" onclick="return confirm('Czy na pewno chcesz usunąć ten samochód?')">Usuń</a>
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
